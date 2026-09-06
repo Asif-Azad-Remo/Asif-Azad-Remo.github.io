@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asif Azad Remo — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F1EEE3;
+    --ink:#1B1F1C;
+    --ink-teal:#17332F;
+    --reed:#3E7C72;
+    --silt:#AD8A52;
+    --alert:#9C4530;
+    --line: rgba(23,51,47,0.18);
+    --panel: #F7F4EA;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:16px;
+    line-height:1.55;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    margin:0;
+    color:var(--ink-teal);
+  }
+  .mono{ font-family:'IBM Plex Mono', monospace; }
+  a{ color:inherit; }
+
+  /* ===== Layout shell ===== */
+  .shell{
+    display:grid;
+    grid-template-columns: 260px 1fr;
+    max-width:1180px;
+    margin:0 auto;
+  }
+  @media (max-width:860px){
+    .shell{ grid-template-columns: 1fr; }
+  }
+
+  /* ===== Legend / nav ===== */
+  .legend{
+    position:sticky;
+    top:0;
+    align-self:start;
+    height:100vh;
+    padding:32px 22px;
+    border-right:1px solid var(--line);
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+  }
+  @media (max-width:860px){
+    .legend{
+      position:static;
+      height:auto;
+      border-right:none;
+      border-bottom:1px solid var(--line);
+      padding:20px 22px;
+    }
+  }
+  .legend-mark{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:34px;
+  }
+  .legend-mark svg{ width:26px; height:26px; flex-shrink:0; }
+  .legend-mark span{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.02em;
+    color:var(--reed);
+  }
+  .legend-title{
+    font-size:12px;
+    color:var(--reed);
+    margin-bottom:14px;
+    font-family:'IBM Plex Mono', monospace;
+  }
+  .legend nav ul{
+    list-style:none;
+    margin:0 0 30px 0;
+    padding:0;
+  }
+  .legend nav li{
+    display:flex;
+    gap:10px;
+    padding:7px 0;
+    font-size:14.5px;
+    border-bottom:1px dotted transparent;
+  }
+  .legend nav a{
+    text-decoration:none;
+    display:flex;
+    gap:10px;
+    width:100%;
+    color:var(--ink);
+    transition:color .15s ease;
+  }
+  .legend nav a:hover{ color:var(--ink-teal); }
+  .legend nav a:hover .idx{ color:var(--silt); }
+  .idx{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--reed);
+    width:20px;
+    flex-shrink:0;
+  }
+  .legend-contact{
+    font-size:13px;
+    color:var(--ink-teal);
+    border-top:1px solid var(--line);
+    padding-top:16px;
+  }
+  .legend-contact div{ margin-bottom:5px; word-break:break-word; }
+  .legend-contact .lbl{ color:var(--reed); font-family:'IBM Plex Mono', monospace; font-size:11px; display:block; margin-bottom:2px;}
+
+  /* ===== Main content ===== */
+  main{ min-width:0; }
+  section{
+    padding:64px 48px;
+    border-bottom:1px solid var(--line);
+    position:relative;
+  }
+  @media (max-width:860px){
+    section{ padding:44px 22px; }
+  }
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    margin-bottom:26px;
+  }
+  .section-head .idx{
+    font-size:13px;
+  }
+  .section-head h2{ font-size:26px; }
+
+  /* ===== Hero ===== */
+  .hero{
+    background:var(--ink-teal);
+    color:var(--paper);
+    padding:80px 48px 64px;
+    overflow:hidden;
+    position:relative;
+    border-bottom:1px solid var(--line);
+  }
+  @media (max-width:860px){ .hero{ padding:52px 22px 44px; } }
+  .hero .contour-wrap{
+    position:absolute; inset:0;
+    opacity:0.35;
+    pointer-events:none;
+  }
+  .hero-content{ position:relative; z-index:2; max-width:640px; }
+  .hero-eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:#9FC8BC;
+    margin-bottom:18px;
+  }
+  .hero h1{
+    color:var(--paper);
+    font-size:clamp(38px, 6vw, 58px);
+    line-height:1.05;
+    margin-bottom:18px;
+  }
+  .hero p.role{
+    font-size:17.5px;
+    max-width:520px;
+    color:#DCE6E1;
+    margin-bottom:26px;
+  }
+  .hero-tags{
+    display:flex; flex-wrap:wrap; gap:10px;
+  }
+  .hero-tags span{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    border:1px solid #3E5F5A;
+    color:#BFD8CF;
+    padding:5px 10px;
+    border-radius:2px;
+  }
+  .hero-actions{ margin-bottom:24px; display:flex; gap:12px; flex-wrap:wrap; }
+  .cv-btn{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    text-decoration:none;
+    color:var(--ink-teal);
+    background:var(--silt);
+    padding:11px 18px;
+    border-radius:2px;
+    transition:opacity .15s ease;
+  }
+  .cv-btn:hover{ opacity:0.88; }
+
+  /* ===== About ===== */
+  .about-grid{
+    display:grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap:40px;
+  }
+  @media (max-width:700px){ .about-grid{ grid-template-columns:1fr; } }
+  .about-grid p{ max-width:56ch; }
+  .stat-block{
+    border-left:2px solid var(--silt);
+    padding-left:16px;
+  }
+  .stat-block .num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:26px;
+    color:var(--ink-teal);
+    display:block;
+  }
+  .stat-block .lbl{ font-size:13px; color:#54615C; }
+  .stat-list{ display:flex; flex-direction:column; gap:18px; }
+
+  /* ===== Featured research ===== */
+  .research-feature{
+    background:var(--ink-teal);
+    color:var(--paper);
+  }
+  .research-feature .section-head h2, .research-feature .idx{ color:var(--paper); }
+  .rf-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:40px;
+    align-items:start;
+  }
+  @media (max-width:820px){ .rf-grid{ grid-template-columns:1fr; } }
+  .rf-grid h3{ color:var(--paper); font-size:21px; margin-bottom:10px; }
+  .rf-grid p{ color:#D9E4DF; max-width:52ch; }
+  .rf-obj{ list-style:none; padding:0; margin:16px 0 0; }
+  .rf-obj li{
+    display:flex; gap:10px;
+    font-size:14.5px;
+    padding:8px 0;
+    border-top:1px solid #2D4C46;
+    color:#CFE0D9;
+  }
+  .rf-obj li:last-child{ border-bottom:1px solid #2D4C46; }
+  .rf-obj .idx{ color:var(--silt); }
+  .map-frame{
+    border:1px solid #3E5F5A;
+    background:#123C36;
+    padding:18px;
+  }
+  .map-frame svg{ width:100%; height:auto; display:block; }
+  .map-frame figcaption{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    color:#9FC8BC;
+    margin-top:10px;
+  }
+  .timeline-bar{
+    margin-top:22px;
+    display:flex;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:#9FC8BC;
+  }
+  .timeline-bar div{
+    flex:1;
+    border-top:2px solid #3E5F5A;
+    padding-top:6px;
+    text-align:center;
+  }
+  .timeline-bar div.active{ border-top-color:var(--silt); color:var(--silt); }
+
+  /* ===== Education timeline ===== */
+  .edu-item{
+    display:grid;
+    grid-template-columns: 100px 1fr;
+    gap:22px;
+    padding:22px 0;
+    border-top:1px solid var(--line);
+  }
+  .edu-item:first-of-type{ border-top:none; }
+  .edu-item .yr{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--silt);
+  }
+  .edu-item h3{ font-size:19px; margin-bottom:4px; }
+  .edu-item .school{ font-size:14px; color:#54615C; margin-bottom:10px; }
+  .edu-item .courses{ font-size:13.5px; color:#3C443F; max-width:64ch; }
+
+  /* ===== Research experience / publications ===== */
+  .xp-item{ padding:20px 0; border-top:1px solid var(--line); }
+  .xp-item:first-of-type{ border-top:none; }
+  .xp-head{ display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-bottom:6px;}
+  .xp-head h3{ font-size:17.5px; }
+  .xp-head .yr{ font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--reed); white-space:nowrap; }
+  .xp-item .sup{ font-size:13px; color:#697570; margin-bottom:8px; }
+  .xp-item ul{ margin:0; padding-left:18px; font-size:14.5px; }
+  .xp-item li{ margin-bottom:4px; }
+
+  .pub-block{
+    border-left:2px solid var(--reed);
+    padding:4px 0 4px 18px;
+  }
+  .pub-block .cite{ font-size:14.5px; }
+  .pub-block .venue{ font-size:13px; color:#697570; margin-top:6px; }
+
+  /* ===== Skills ===== */
+  .skill-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:0;
+    border-top:1px solid var(--line);
+    border-left:1px solid var(--line);
+  }
+  @media (max-width:760px){ .skill-grid{ grid-template-columns:1fr; } }
+  .skill-col{
+    padding:22px 24px;
+    border-right:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .skill-col h3{ font-size:15px; margin-bottom:12px; color:var(--reed); }
+  .skill-col p{ font-size:13.8px; margin:0; }
+
+  /* ===== Courses ===== */
+  .course-grid{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap:22px;
+  }
+  @media (max-width:700px){ .course-grid{ grid-template-columns:1fr; } }
+  .course-card{
+    border:1px solid var(--line);
+    padding:22px;
+    background:var(--panel);
+  }
+  .course-card .meta{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    color:var(--reed);
+    margin-bottom:8px;
+  }
+  .course-card h3{ font-size:17px; margin-bottom:6px; }
+  .course-card .org{ font-size:13px; color:#697570; margin-bottom:12px; }
+  .course-card ul{ margin:0; padding-left:18px; font-size:13.5px; }
+  .course-card li{ margin-bottom:4px; }
+  .badge-row{ display:flex; gap:12px; margin-top:22px; flex-wrap:wrap; }
+  .badge{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    border:1px solid var(--line);
+    padding:8px 12px;
+    color:var(--ink-teal);
+  }
+
+  /* ===== Achievements ===== */
+  .ach-list{ list-style:none; padding:0; margin:0; }
+  .ach-list li{
+    padding:12px 0;
+    border-top:1px solid var(--line);
+    font-size:14.5px;
+    display:flex; gap:14px;
+  }
+  .ach-list li:first-child{ border-top:none; }
+  .ach-list .mono{ color:var(--silt); font-size:12.5px; width:26px; flex-shrink:0; }
+
+  /* ===== Footer ===== */
+  footer{
+    background:var(--ink-teal);
+    color:#CFE0D9;
+    padding:52px 48px 40px;
+  }
+  @media (max-width:860px){ footer{ padding:40px 22px; } }
+  footer h2{ color:var(--paper); font-size:24px; margin-bottom:10px; }
+  footer p{ max-width:48ch; color:#B9CFC6; font-size:14.5px; }
+  .foot-links{ display:flex; gap:22px; flex-wrap:wrap; margin-top:22px; font-size:13.5px; }
+  .foot-links a{ text-decoration:none; border-bottom:1px solid #3E5F5A; padding-bottom:2px; }
+  .foot-note{ margin-top:36px; font-size:12px; color:#6E8983; }
+
+  .note{
+    font-size:12.5px;
+    color:var(--reed);
+    font-family:'IBM Plex Mono', monospace;
+    margin-top:8px;
+  }
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- LEGEND / NAV -->
+  <aside class="legend">
+    <div>
+      <div class="legend-mark">
+        <svg viewBox="0 0 40 40" fill="none">
+          <circle cx="20" cy="20" r="17" stroke="#17332F" stroke-width="1.4"/>
+          <circle cx="20" cy="20" r="11" stroke="#3E7C72" stroke-width="1.4"/>
+          <circle cx="20" cy="20" r="5" stroke="#AD8A52" stroke-width="1.6"/>
+        </svg>
+        <span>SHEET&nbsp;01&nbsp;/&nbsp;AAR</span>
+      </div>
+      <div class="legend-title">Contents</div>
+      <nav>
+        <ul>
+          <li><a href="#about"><span class="idx">01</span> About</a></li>
+          <li><a href="#featured"><span class="idx">02</span> Featured research</a></li>
+          <li><a href="#education"><span class="idx">03</span> Education</a></li>
+          <li><a href="#experience"><span class="idx">04</span> Experience</a></li>
+          <li><a href="#publications"><span class="idx">05</span> Publications</a></li>
+          <li><a href="#skills"><span class="idx">06</span> Skills</a></li>
+          <li><a href="#courses"><span class="idx">07</span> Courses &amp; training</a></li>
+          <li><a href="#achievements"><span class="idx">08</span> Achievements</a></li>
+          <li><a href="#contact"><span class="idx">09</span> Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="legend-contact">
+      <div><span class="lbl">Based in</span>Chattogram, Bangladesh</div>
+      <div><span class="lbl">Email</span>asifazadremo@gmail.com</div>
+      <div><span class="lbl">Phone</span>+880 1879 277356</div>
+    </div>
+  </aside>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="contour-wrap">
+        <svg id="contours" viewBox="0 0 800 420" preserveAspectRatio="none" width="100%" height="100%">
+          <path d="M-20,60 C150,20 250,110 400,70 C550,30 650,90 820,50" stroke="#3E7C72" stroke-width="1.2" fill="none"/>
+          <path d="M-20,120 C150,80 260,170 420,130 C570,90 660,150 820,110" stroke="#3E7C72" stroke-width="1.2" fill="none"/>
+          <path d="M-20,190 C160,150 270,230 430,190 C580,150 670,210 820,180" stroke="#AD8A52" stroke-width="1.4" fill="none"/>
+          <path d="M-20,260 C170,220 280,300 440,260 C590,220 680,280 820,250" stroke="#3E7C72" stroke-width="1.2" fill="none"/>
+          <path d="M-20,330 C180,290 290,370 450,330 C600,290 690,350 820,320" stroke="#3E7C72" stroke-width="1.2" fill="none"/>
+        </svg>
+      </div>
+      <div class="hero-content">
+        <div class="hero-eyebrow">Civil &amp; Environmental Engineering — Portfolio</div>
+        <h1>Asif Azad Remo</h1>
+        <p class="role">Civil and environmental engineer working across flood-hazard mapping, GIS and remote sensing, water-quality assessment, and construction quality control — pairing spatial analysis with field data and community engagement.</p>
+        <div class="hero-actions">
+          <a class="cv-btn" href="Asif_Azad_Remo_CV.pdf" download>↓&nbsp; Download CV (PDF)</a>
+        </div>
+        <div class="hero-tags">
+          <span>GIS &amp; RS analysis</span>
+          <span>Flood hazard mapping</span>
+          <span>Water quality assessment</span>
+          <span>Construction QA/QC</span>
+          <span>M.Eng, Disaster Engineering — CUET</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="section-head"><span class="idx mono">01</span><h2>About</h2></div>
+      <div class="about-grid">
+        <p>
+          I work at the intersection of civil and environmental engineering and disaster risk — using GIS and field data to understand where flooding happens, who it affects most, and what can realistically be done about it at the community level. My current research centers on Chattogram City, where steep hill drainage and rapid, largely unplanned urban growth make flash floods a recurring and worsening problem.
+          <br><br>
+          Earlier, my undergraduate research assessed water quality on the Halda River, combining laboratory analysis with field sampling. Alongside research, training in RCC construction quality control and a site-based internship have given me practical exposure to estimating, drawing interpretation, and on-site quality assurance — the same habit of pairing hard data with conditions on the ground carries through all of it.
+        </p>
+        <div class="stat-list">
+          <div class="stat-block">
+            <span class="num">36</span>
+            <span class="lbl">M.Eng credit hours, Disaster Engineering &amp; Management, CUET</span>
+          </div>
+          <div class="stat-block">
+            <span class="num">3.72</span>
+            <span class="lbl">B.Sc CGPA, Civil Engineering, Port City International University</span>
+          </div>
+          <div class="stat-block">
+            <span class="num">01</span>
+            <span class="lbl">Conference publication, 7th ICCESD (2024)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED RESEARCH -->
+    <section class="research-feature" id="featured">
+      <div class="section-head"><span class="idx mono">02</span><h2>Featured research</h2></div>
+      <div class="rf-grid">
+        <div>
+          <h3>Flash flood risk in Chattogram City: a community-based risk reduction approach</h3>
+          <p>M.Eng thesis project. It combines GIS-based flood-hazard mapping with household surveys, key-informant interviews, and focus group discussions to produce ward-level risk maps and a Community-Based Risk Reduction (CBRR) framework the city's most flood-prone wards can actually use — closing with a policy brief for municipal disaster planning, rather than a top-down hazard map alone.</p>
+          <ul class="rf-obj">
+            <li><span class="idx">i</span> Map flood-prone areas using hydrological and geospatial data</li>
+            <li><span class="idx">ii</span> Assess the physical and socio-economic vulnerability of exposed communities</li>
+            <li><span class="idx">iii</span> Design a CBRR framework tailored to Chattogram's context</li>
+          </ul>
+          <div class="timeline-bar">
+            <div class="active">May</div><div class="active">Jun</div><div class="active">Jul</div><div class="active">Aug</div><div class="active">Sep</div><div class="active">Oct '25</div>
+          </div>
+        </div>
+        <figure class="map-frame">
+          <svg viewBox="0 0 300 300">
+            <rect x="0" y="0" width="300" height="300" fill="#0F2F2A"/>
+            <path d="M40,20 L230,10 L260,90 L240,180 L190,260 L110,270 L60,200 L30,110 Z" fill="none" stroke="#3E7C72" stroke-width="1.2"/>
+            <path d="M60,60 L200,50 L220,120 L200,190 L140,230 L90,220 L70,150 Z" fill="none" stroke="#3E7C72" stroke-width="1" stroke-dasharray="3 3"/>
+            <circle cx="90" cy="90" r="4" fill="#AD8A52"/>
+            <circle cx="150" cy="80" r="4" fill="#AD8A52"/>
+            <circle cx="180" cy="150" r="4" fill="#9C4530"/>
+            <circle cx="120" cy="190" r="4" fill="#9C4530"/>
+            <circle cx="160" cy="210" r="4" fill="#AD8A52"/>
+          </svg>
+          <figcaption>Fig. 02 — Ward-level flood-hazard mapping (schematic; final GIS output to be added)</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education">
+      <div class="section-head"><span class="idx mono">03</span><h2>Education</h2></div>
+
+      <div class="edu-item">
+        <div class="yr mono">2024 —<br>Present</div>
+        <div>
+          <h3>M.Eng, Disaster Engineering &amp; Management</h3>
+          <div class="school">Chittagong University of Engineering &amp; Technology · 36 credit hours</div>
+          <div class="courses"><strong>Thesis:</strong> Assessment of Flash Flood Risks in Chattogram City &amp; Risk Reduction through a Community-Based Approach (CBRR).<br><br>Coursework: Challenges in Disaster &amp; Environmental Engineering · Disaster &amp; Emergency Management · Research Methodology &amp; Tools in Disaster Management · Flood Control &amp; Drainage Engineering · Climate Change: Mitigation &amp; Adaptation · Environmental Impact Assessment · Environmental Management · Environmental Sanitation · Advanced Environmental Bioremediation · Waste Reduction, Water &amp; Wastewater Treatment · Challenges of Concrete Construction for Extreme Conditions · Thesis project.</div>
+        </div>
+      </div>
+
+      <div class="edu-item">
+        <div class="yr mono">2019 —<br>2023</div>
+        <div>
+          <h3>B.Sc, Civil Engineering</h3>
+          <div class="school">Port City International University · CGPA 3.72 / 4.00</div>
+          <div class="courses"><strong>Thesis:</strong> Water Quality Assessment of Halda River at Various Depths.<br><br>Coursework: Environmental Engineering · Structural Analysis &amp; Design · Design of Steel Structure · Prestressed Concrete · Geotechnical Engineering · Hydrology · Strength of Materials · Engineering Mechanics · Surveying.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <div class="section-head"><span class="idx mono">04</span><h2>Experience</h2></div>
+
+      <div class="xp-item">
+        <div class="xp-head">
+          <h3>Engineering Intern — Site Works &amp; Quality Control</h3>
+          <span class="yr mono">Feb – Mar 2023</span>
+        </div>
+        <div class="sup">CPDL, Chattogram</div>
+        <ul>
+          <li>Contributed to the planning and execution of residential and commercial projects, supporting quality, budget, and schedule adherence</li>
+          <li>Coordinated and supervised a team of 15, delegating tasks and reporting progress</li>
+          <li>Assisted with project documentation, site inspections, and compliance with safety and regulatory standards</li>
+        </ul>
+      </div>
+
+      <div class="xp-item">
+        <div class="xp-head">
+          <h3>Field Data Collector — Water-Logging Vulnerability Assessment, Chittagong City</h3>
+          <span class="yr mono">Sep 2021</span>
+        </div>
+        <div class="sup">Supervised by Md. Mehedi Hassan Masum, CUET</div>
+        <ul>
+          <li>Collected and organized field data on urban water-logging (flood) vulnerability</li>
+          <li>Supported the research team in identifying key contributing hazard factors</li>
+          <li>Documented and analyzed findings to support project outcomes</li>
+        </ul>
+      </div>
+
+      <div class="xp-item">
+        <div class="xp-head">
+          <h3>Undergraduate Researcher — Water Quality Assessment of Halda River at Various Depths</h3>
+          <span class="yr mono">Jan – Apr 2020</span>
+        </div>
+        <div class="sup">Port City International University · Supervised by Md. Jahedul Alam</div>
+        <ul>
+          <li>Led an independent thesis project assessing water quality across river depths using field and laboratory methods</li>
+          <li>Analyzed environmental parameters to evaluate river health and ecosystem sustainability</li>
+          <li>Presented findings at the 7th International Conference on Civil Engineering for Sustainable Development (ICCESD)</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- PUBLICATIONS -->
+    <section id="publications">
+      <div class="section-head"><span class="idx mono">05</span><h2>Publications</h2></div>
+      <div class="pub-block">
+        <div class="cite">Azad Remo, A., Rashid, R., Das, B., &amp; Hossan, M.S. (2024). <em>Water Quality Assessment of Halda River at Various Depths.</em></div>
+        <div class="venue">Proceedings of the 7th International Conference on Civil Engineering for Sustainable Development (ICCESD) · <a href="https://www.researchgate.net/publication/380425056_WATER_QUALITY_ASSESSMENT_OF_HALDA_RIVER_AT_VARIOUS_DEPTHS">View on ResearchGate</a></div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="section-head"><span class="idx mono">06</span><h2>Skills</h2></div>
+      <div class="skill-grid">
+        <div class="skill-col">
+          <h3>Field &amp; Laboratory</h3>
+          <p>Water sampling (Van Dorn bottle), sample preservation, pH &amp; EC measurement, TDS, dissolved oxygen &amp; COD analysis (titration), spectrophotometry, turbidity, salinity.</p>
+        </div>
+        <div class="skill-col">
+          <h3>Analysis &amp; GIS</h3>
+          <p>GIS mapping &amp; spatial analysis, terrain &amp; vulnerability assessment, statistical analysis (SPSS, R), survey design (KoboToolbox), research documentation, comparison against BECR / FAO / WHO standards.</p>
+        </div>
+        <div class="skill-col">
+          <h3>Tools &amp; Software</h3>
+          <p>ArcGIS Pro, ArcMap, QGIS, AutoCAD, UTM Geo Map, KoboToolbox, SPSS, R, Python, VS Code, PyCharm, Mendeley, MS Office / Google Workspace.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- COURSES -->
+    <section id="courses">
+      <div class="section-head"><span class="idx mono">07</span><h2>Courses &amp; training</h2></div>
+      <div class="course-grid">
+        <div class="course-card">
+          <div class="meta">80 HRS · MAY – NOV 2024 · EDGE × CUET</div>
+          <h3>GIS and Its Applications</h3>
+          <div class="org">Instructors: Debasish Roy Raja, Md. Kamrul Islam, Sourav Das</div>
+          <ul>
+            <li>Spatial data models, coordinate systems &amp; projections</li>
+            <li>Digitization, georeferencing &amp; geodatabase management</li>
+            <li>Spatial analysis, terrain modeling &amp; suitability mapping</li>
+            <li>Remote-sensing integration &amp; disaster-risk mapping applications</li>
+          </ul>
+        </div>
+        <div class="course-card">
+          <div class="meta">40 CLASSES · 40 HRS · QLEARN</div>
+          <h3>Quality Control of RCC Building Construction</h3>
+          <div class="org">Instructor: Prof. Dr. Jahangir Alam, Civil Engineering, BUET</div>
+          <ul>
+            <li>Site survey, soil-test supervision, drawing interpretation, estimating &amp; site layout</li>
+            <li>Concrete-casting &amp; reinforcement quality control</li>
+            <li>QC across footing, pile cap, column, beam, slab, staircase, shear wall &amp; lintel</li>
+            <li>Precast &amp; cast-in-situ pile QC; site coordination with owners, foremen &amp; labour contractors</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACHIEVEMENTS -->
+    <section id="achievements">
+      <div class="section-head"><span class="idx mono">08</span><h2>Achievements</h2></div>
+      <ul class="ach-list">
+        <li><span class="mono">—</span> University Merit Scholarship, 2nd, 3rd &amp; 4th academic year</li>
+        <li><span class="mono">—</span> National Education Board Scholarship, JSC Examination</li>
+        <li><span class="mono">—</span> Participant, Inter-University Mechanics Olympiad 2022 (PCIU)</li>
+      </ul>
+    </section>
+
+  </main>
+</div>
+
+<!-- FOOTER / CONTACT -->
+<footer id="contact">
+  <h2>Get in touch</h2>
+  <p>Open to roles and collaborations in civil and environmental engineering, GIS and disaster-risk analysis, and construction quality control.</p>
+  <div class="foot-links">
+    <a href="mailto:asifazadremo@gmail.com">asifazadremo@gmail.com</a>
+    <a href="tel:+8801879277356">+880 1879 277356</a>
+    <a href="https://www.linkedin.com/in/asif-azad-remo-b802001b8/">LinkedIn</a>
+    <a href="https://www.researchgate.net/profile/Asif-Remo">ResearchGate</a>
+    <a href="https://scholar.google.com/citations?hl=en&user=cCW2NlgAAAAJ&view_op=list_works">Google Scholar</a>
+    <a href="Asif_Azad_Remo_CV.pdf" download>Download CV</a>
+  </div>
+</footer>
+
+<script>
+  // one orchestrated draw-in of the hero contour lines on load
+  const paths = document.querySelectorAll('#contours path');
+  paths.forEach((p, i) => {
+    const len = p.getTotalLength();
+    p.style.strokeDasharray = len;
+    p.style.strokeDashoffset = len;
+    p.style.transition = `stroke-dashoffset 1.4s ease ${i * 0.12}s`;
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      p.style.strokeDashoffset = 0;
+    }));
+  });
+</script>
+
+</body>
+</html>
