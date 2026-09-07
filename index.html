@@ -303,6 +303,16 @@
   .xp-head h3{ font-size:17.5px; }
   .xp-head .yr{ font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--reed); white-space:nowrap; }
   .xp-item .sup{ font-size:13px; color:#697570; margin-bottom:8px; }
+
+  /* institution / employer marks — white chip normalises logos that ship
+     with white vs transparent backgrounds against the cream page */
+  .logo-chip{
+    display:inline-flex; align-items:center; justify-content:center;
+    height:36px; padding:5px 8px; margin-right:9px;
+    background:#fff; border:1px solid var(--line); border-radius:5px;
+    vertical-align:middle;
+  }
+  .logo-chip img{ height:100%; width:auto; max-width:104px; display:block; }
   .xp-item ul{ margin:0; padding-left:18px; font-size:14.5px; }
   .xp-item li{ margin-bottom:4px; }
 
@@ -527,7 +537,7 @@
         <div class="yr mono">2024 —<br>Present</div>
         <div>
           <h3>M.Eng, Disaster Engineering &amp; Management</h3>
-          <div class="school">Chittagong University of Engineering &amp; Technology · 36 credit hours</div>
+          <div class="school"><span class="logo-chip"><img src="assets/cuet.png" alt="Chittagong University of Engineering &amp; Technology" onerror="this.closest('.logo-chip').remove()"></span>Chittagong University of Engineering &amp; Technology · 36 credit hours</div>
           <div class="courses"><strong>Thesis:</strong> Assessment of Flash Flood Risks in Chattogram City &amp; Risk Reduction through a Community-Based Approach (CBRR).<br><br>Coursework: Challenges in Disaster &amp; Environmental Engineering · Disaster &amp; Emergency Management · Research Methodology &amp; Tools in Disaster Management · Flood Control &amp; Drainage Engineering · Climate Change: Mitigation &amp; Adaptation · Environmental Impact Assessment · Environmental Management · Environmental Sanitation · Advanced Environmental Bioremediation · Waste Reduction, Water &amp; Wastewater Treatment · Challenges of Concrete Construction for Extreme Conditions · Thesis project.</div>
         </div>
       </div>
@@ -536,7 +546,7 @@
         <div class="yr mono">2019 —<br>2023</div>
         <div>
           <h3>B.Sc, Civil Engineering</h3>
-          <div class="school">Port City International University · CGPA 3.72 / 4.00</div>
+          <div class="school"><span class="logo-chip"><img src="assets/pciu.png" alt="Port City International University" onerror="this.closest('.logo-chip').remove()"></span>Port City International University · CGPA 3.72 / 4.00</div>
           <div class="courses"><strong>Thesis:</strong> Water Quality Assessment of Halda River at Various Depths.<br><br>Coursework: Environmental Engineering · Structural Analysis &amp; Design · Design of Steel Structure · Prestressed Concrete · Geotechnical Engineering · Hydrology · Strength of Materials · Engineering Mechanics · Surveying.</div>
         </div>
       </div>
@@ -569,7 +579,7 @@
           <h3>Engineering Intern — Site Works &amp; Quality Control</h3>
           <span class="yr mono">Feb – Mar 2023</span>
         </div>
-        <div class="sup">CPDL, Chattogram</div>
+        <div class="sup"><span class="logo-chip"><img src="assets/cpdl.png" alt="CPDL Engineering" onerror="this.closest('.logo-chip').remove()"></span>CPDL, Chattogram</div>
         <ul>
           <li>Supervised and coordinated a 15-person team on active residential and commercial sites, delegating daily tasks and reporting progress to senior engineers</li>
           <li>Carried out site inspections and enforced safety, PPE, and regulatory compliance</li>
